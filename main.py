@@ -488,74 +488,33 @@ oled.clear(True)
 oled.clear(False)
 oled.draw_text("Robee", 45, 50, True, False)
 oled.draw_image(oled.char_image("""
-        . . . # # . . .
-        . . . # # . # #
-        . . . . . # # #
-        . . . . # . . .
-        . . . . # . # .
-        # . . . # . # .
-        # # . . # . . .
-        # . # . # # # #
-        # . . # # # # #
-        . # # # # # # #
+...##......##...
+...##..##..##...
+.....######.....
+....#......#....
+....#.#..#.#....
+#...#.#..#.#...#
+##..#......#..##
+#.#.########.#.#
+#..##########..#
+.##############.
+...##########...
+..#..........#..
+.#..###..###..#.
+#..##########..#
+###.########.###
+................
+.....##..##.....
+......####......
+.......##.......
+.......##.......
+
         """),
     56,
     23,
     True,
     False,
     False)
-oled.draw_image(oled.char_image("""
-        . . . # # # # #
-        . . # . . . . .
-        . # . . # # # .
-        # . . # # # # #
-        # # # . # # # #
-        . . . . . . . .
-        . . . . . # # .
-        . . . . . . # #
-        . . . . . . . #
-        . . . . . . . #
-        """),
-    56,
-    32,
-    True,
-    False,
-    False)
-oled.draw_image(oled.char_image("""
-        . . . # # . . .
-        # # . # # . . .
-        # # # . . . . .
-        . . . # . . . .
-        . # . # . . . .
-        . # . # . . . #
-        . . . # . . # #
-        # # # # . # . #
-        # # # # # . . #
-        # # # # # # # .
-        """),
-    64,
-    23,
-    True,
-    False,
-    False)
-oled.draw_image(oled.char_image("""
-        # # # # # . . .
-        . . . . . # . .
-        . # # # . . # .
-        # # # # # . . #
-        # # # # . # # #
-        . . . . . . . .
-        . # # . . . . .
-        # # . . . . . .
-        # . . . . . . .
-        # . . . . . . .
-        """),
-    64,
-    32,
-    True,
-    False,
-    False)
-oled.draw()
 oled.draw()
 basic.pause(2000)
 émotion = 1
@@ -583,6 +542,18 @@ def on_forever2():
 basic.forever(on_forever2)
 
 def on_forever3():
+    if 3 == émotion:
+        oled.clear(True)
+        oled.clear(False)
+        dodo1()
+        basic.pause(500)
+        oled.clear(True)
+        oled.clear(False)
+        dodo2()
+        basic.pause(100)
+basic.forever(on_forever3)
+
+def on_forever4():
     if 1 == émotion:
         oled.clear(True)
         oled.clear(False)
@@ -610,16 +581,4 @@ def on_forever3():
             music.PlaybackMode.UNTIL_DONE)
         happy_2()
         basic.pause(200)
-basic.forever(on_forever3)
-
-def on_forever4():
-    if 3 == émotion:
-        oled.clear(True)
-        oled.clear(False)
-        dodo1()
-        basic.pause(500)
-        oled.clear(True)
-        oled.clear(False)
-        dodo2()
-        basic.pause(100)
 basic.forever(on_forever4)
