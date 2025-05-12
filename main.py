@@ -303,6 +303,15 @@ def sad_1():
         False,
         False)
     oled.draw()
+
+def on_button_pressed_b():
+    global émotion
+    oled.clear(True)
+    oled.clear(False)
+    basic.pause(1000)
+    émotion = 2
+input.on_button_pressed(Button.B, on_button_pressed_b)
+
 def happy_2():
     oled.clear(False)
     oled.draw_image(oled.char_image("""
@@ -383,7 +392,6 @@ def on_logo_pressed():
     oled.clear(True)
     oled.clear(False)
     basic.pause(500)
-    émotion = 3
     émotion = 1
 input.on_logo_event(TouchButtonEvent.PRESSED, on_logo_pressed)
 
@@ -488,27 +496,26 @@ oled.clear(True)
 oled.clear(False)
 oled.draw_text("Robee", 45, 50, True, False)
 oled.draw_image(oled.char_image("""
-...##......##...
-...##..##..##...
-.....######.....
-....#......#....
-....#.#..#.#....
-#...#.#..#.#...#
-##..#......#..##
-#.#.########.#.#
-#..##########..#
-.##############.
-...##########...
-..#..........#..
-.#..###..###..#.
-#..##########..#
-###.########.###
-................
-.....##..##.....
-......####......
-.......##.......
-.......##.......
-
+        ...##......##...
+        ...##..##..##...
+        .....######.....
+        ....#......#....
+        ....#.#..#.#....
+        #...#.#..#.#...#
+        ##..#......#..##
+        #.#.########.#.#
+        #..##########..#
+        .##############.
+        ...##########...
+        ..#..........#..
+        .#..###..###..#.
+        #..##########..#
+        ###.########.###
+        ................
+        .....##..##.....
+        ......####......
+        .......##.......
+        .......##.......
         """),
     56,
     23,
@@ -520,40 +527,6 @@ basic.pause(2000)
 émotion = 1
 
 def on_forever():
-    if 2 == émotion:
-        oled.clear(True)
-        oled.clear(False)
-        sad_2()
-        basic.pause(100)
-        oled.clear(True)
-        oled.clear(False)
-        sad_1()
-        basic.pause(100)
-basic.forever(on_forever)
-
-def on_forever2():
-    global émotion
-    if 1 == émotion:
-        basic.pause(5000)
-        oled.clear(True)
-        oled.clear(False)
-        basic.pause(500)
-        émotion = 2
-basic.forever(on_forever2)
-
-def on_forever3():
-    if 3 == émotion:
-        oled.clear(True)
-        oled.clear(False)
-        dodo1()
-        basic.pause(500)
-        oled.clear(True)
-        oled.clear(False)
-        dodo2()
-        basic.pause(100)
-basic.forever(on_forever3)
-
-def on_forever4():
     if 1 == émotion:
         oled.clear(True)
         oled.clear(False)
@@ -581,4 +554,22 @@ def on_forever4():
             music.PlaybackMode.UNTIL_DONE)
         happy_2()
         basic.pause(200)
-basic.forever(on_forever4)
+    if 2 == émotion:
+        oled.clear(True)
+        oled.clear(False)
+        sad_2()
+        basic.pause(100)
+        oled.clear(True)
+        oled.clear(False)
+        sad_1()
+        basic.pause(100)
+    if 3 == émotion:
+        oled.clear(True)
+        oled.clear(False)
+        dodo1()
+        basic.pause(500)
+        oled.clear(True)
+        oled.clear(False)
+        dodo2()
+        basic.pause(100)
+basic.forever(on_forever)
